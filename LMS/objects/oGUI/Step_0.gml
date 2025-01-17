@@ -64,17 +64,17 @@ if (state != screen.ADAPT) and (count > 1) {
 	}
 }
 
-if (state = screen.ADAPT) {
+if (state == screen.ADAPT) {
 	view_enabled = true;
 	view_visible[0] = true;
 	view_visible[1] = false;
 	view_visible[2] = false;
 	view_visible[3] = false;
 	
-	var _cam = camera_create_view(0, 0, global.res_width / 2, global.res_height / 2);
+	var _cam = camera_create_view(0, 0, global.res_width / 3, global.res_height / 3);
 		
 	camera_set_view_target(_cam, oArena);
-	camera_set_view_border(_cam, global.res_width / 4, global.res_height / 4);
+	camera_set_view_border(_cam, global.res_width / 6, global.res_height / 6);
 
 	view_hport[0] = global.res_height;
 	view_wport[0] = global.res_width;

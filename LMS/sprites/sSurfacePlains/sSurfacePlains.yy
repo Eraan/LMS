@@ -2,7 +2,7 @@
   "$GMSprite":"",
   "%Name":"sSurfacePlains",
   "bboxMode":0,
-  "bbox_bottom":255,
+  "bbox_bottom":303,
   "bbox_left":0,
   "bbox_right":255,
   "bbox_top":0,
@@ -18,7 +18,7 @@
   ],
   "gridX":16,
   "gridY":16,
-  "height":256,
+  "height":512,
   "HTile":true,
   "layers":[
     {"$GMImageLayer":"","%Name":"3112d32b-f682-4667-8605-77eddf450afb","blendMode":0,"displayName":"default","isLocked":false,"name":"3112d32b-f682-4667-8605-77eddf450afb","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
