@@ -1,1 +1,0 @@
-global.pauser = 0;

@@ -1,1 +1,0 @@
-draw_text_transformed_color(x + 8 + random_x, y + 4 + random_y, tempMessage, 0.25, 0.25, 0, messageColor, messageColor, messageColor, messageColor, opacity);
