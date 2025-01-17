@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sTempMessage",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sTempMessage",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
