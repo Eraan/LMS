@@ -142,22 +142,22 @@ switch (oSaveLoad.stage) {
 	case stages.init_PREP:
 		draw_text(view_wport[0] / 2, view_hport[0] / 2, "PREPARE");
 		draw_text(view_wport[0] / 2, view_hport[0] / 2 + 32, "ROUND " + string(global.game_rounds));
-		draw_text_ext_transformed(view_wport[0] / 2, view_hport[0] / 2 + 64, string(floor(oSaveLoad.alarm[1] / 3600)) + " " + string(floor((oSaveLoad.alarm[1] / 60) mod 60)), 32, 500, 1, 1, 0);
+		draw_text_ext_transformed(view_wport[0] / 2, view_hport[0] / 2 + 64, string(floor(oSaveLoad.alarm[1] / 3600)) + ":" + string(floor((oSaveLoad.alarm[1] / 60) mod 60)), 32, 500, 1, 1, 0);
 	break;
 	case stages.FIGHT:
 		draw_text(view_wport[0] / 2, 0, "FIGHT");
 		draw_text(view_wport[0] / 2, 32, "ROUND " + string(global.game_rounds));
-		draw_text_ext_transformed(view_wport[0] / 2, 64, string(floor(oSaveLoad.alarm[2] / 3600)) + " " + string(floor((oSaveLoad.alarm[2] / 60) mod 60)), 32, 500, 1, 1, 0);
+		draw_text_ext_transformed(view_wport[0] / 2, 64, string(floor(oSaveLoad.alarm[2] / 3600)) + ":" + string(floor((oSaveLoad.alarm[2] / 60) mod 60)), 32, 500, 1, 1, 0);
 	break;
 	case stages.SHOWDOWN:
 		draw_text(view_wport[0] / 2, 0, "SHOWDOWN");
 		draw_text(view_wport[0] / 2, 32, "ROUND " + string(global.game_rounds));
-		draw_text_ext_transformed(view_wport[0] / 2, 64, string(floor(oSaveLoad.alarm[3] / 3600)) + " " + string(floor((oSaveLoad.alarm[3] / 60) mod 60)), 32, 500, 1, 1, 0);
+		draw_text_ext_transformed(view_wport[0] / 2, 64, string(floor(oSaveLoad.alarm[3] / 3600)) + ":" + string(floor((oSaveLoad.alarm[3] / 60) mod 60)), 32, 500, 1, 1, 0);
 	break;
 	case stages.PREP:
 		draw_text(view_wport[0] / 2, view_hport[0] / 2, "PREPARE");
 		draw_text(view_wport[0] / 2, view_hport[0] / 2 + 32, "ROUND " + string(global.game_rounds));
-		draw_text_ext_transformed(view_wport[0] / 2, view_hport[0] / 2 + 64, string(floor(oSaveLoad.alarm[1] / 3600)) + " " + string(floor((oSaveLoad.alarm[1] / 60) mod 60)), 32, 500, 1, 1, 0);
+		draw_text_ext_transformed(view_wport[0] / 2, view_hport[0] / 2 + 64, string(floor(oSaveLoad.alarm[1] / 3600)) + ":" + string(floor((oSaveLoad.alarm[1] / 60) mod 60)), 32, 500, 1, 1, 0);
 	break;
 }
 

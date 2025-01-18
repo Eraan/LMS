@@ -35,18 +35,19 @@ draw_sprite_ext(sprite_index, image_index, x, y, 1, 1, 0, c_white, 1);
 
 
 if (state == furnace.PICKING) {
-	var seed_count = struct_names_count(bars);
-	var seed_names = variable_struct_get_names(bars);
-	array_sort(seed_names, true);
+	var bars_count = struct_names_count(bars);
+	var bars_names = variable_struct_get_names(bars);
+	array_sort(bars_names, true);
 	
-	for (var i = 0; i < seed_count; i += 1) {
+	for (var i = 0; i < bars_count; i += 1) {
 		//draw_text(x, y + 16, i);
 		
-		var key = seed_names[i];
+		var key = bars_names[i];
 		var name = bars[$ key][$ "name"];
 		var price = bars[$ key][$ "price"];
 		var sprite = bars[$ key][$ "sprite"];
 		var recipe = bars[$ key][$ "recipe"];
+		var amount = bars[$ key][$ "amount"];
 		
 		// Outline
 		/*
@@ -73,10 +74,6 @@ if (state == furnace.PICKING) {
 					if (nearest_player.items[$ mat][$ "amount"] >= recipe[$ mat]) {
 						player_materials += 1;
 					}
-					
-					show_debug_message("quantity Req " + string(recipe[$ mat]));
-					show_debug_message("player mats " + string(player_materials));
-					show_debug_message("mat " + string(mat));
 				}
 			}
 			
@@ -100,11 +97,19 @@ if (state == furnace.PICKING) {
 				draw_text_transformed(x - 4, y - 4 - (i * 8), string(price), .25, .25, 0);
 		
 				if (mouse_check_button_pressed(mb_left)) or (gamepad_button_check(player_device, gp_face1)) {
-					//smelt_ore(key);
 					alarm[0] = 240;
 					image_index = 1;
+				// Save Requested Bar Details
 					selected_bar = key;
+					selected_bar_sprite = sprite;
+				// Deduct Gold from Player
 					nearest_player.local_data.gold -= price;
+				// Remove Materials from Player's Inventory
+					for (var k = 0; k < materials; k += 1) {
+						var mat = materials_required[k];
+				
+						nearest_player.items[$ mat][$ "amount"] -= recipe[$ mat];
+					}
 					nearest_player.state = targetting.NULL;
 					state = furnace.SMELTING;
 				}
@@ -123,4 +128,16 @@ if (state == furnace.PICKING) {
 			}
 		}
 	}
+}
+
+if (state == furnace.PENDING) and (selected_bar_sprite != noone) {
+	draw_sprite_ext(selected_bar_sprite, 0, x + 4, y + 8, .5, .5, 0, c_white, 1);
+}
+
+if (state == furnace.SMELTING) {
+	sprite_index = sFurnaceLit;
+	image_speed = .25;
+} else {
+	sprite_index = sFurnace;
+	image_speed = 0;
 }

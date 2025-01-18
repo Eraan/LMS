@@ -136,11 +136,11 @@ if (state == furnace.PICKING) and (mouse_check_button_pressed(mb_right) or (game
 }
 
 if (state == furnace.PENDING) {
-	image_index = 2;
+	image_index = 0;
 	
 	if (distanceFromPlayer <= 16) {
 		if (keyboard_check_pressed(ord("F"))) or (gamepad_button_check_pressed(player_device, gp_face3))  {
-			add_item(player, bars[$ selected_bar][$ "slug"], bars[$ selected_bar], 1);
+			add_item(player, bars[$ selected_bar][$ "slug"], bars[$ selected_bar], bars[$ selected_bar][$ "amount"]);
 			selected_bar = "";
 			state = furnace.EMPTY;
 		}

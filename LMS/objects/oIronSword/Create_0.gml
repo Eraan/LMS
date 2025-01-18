@@ -4,7 +4,7 @@ itemData = {
     price: 35,
     amount: 1,
     sprite: sIronSword,
-    object: "oIronSword",
+    object: oIronSword,
     type: "Weapon",
 	damage: 5,
 	cooldown: 30,

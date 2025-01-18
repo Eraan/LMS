@@ -14,7 +14,7 @@ local_data = {
 	wins : 0,
 	deaths : 0,
 	hp : 20,
-	gold : 10,
+	gold : 1000,
 	strength : 0,
 	adrenaline : 1
 }

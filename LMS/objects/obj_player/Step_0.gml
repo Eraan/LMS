@@ -47,7 +47,11 @@ if (oSaveLoad.stage != stages.PENDING) {
 		} else if (controlls == "Gamepad") {
 			gamepad_controls(player_instance, player_ordr, device, player_adrenaline);
 		}
+		
+		// Remove Items from Inventory with a 0 amount.
+		remove_empty_items(player_instance);
 	}
 }
 
 //if (player_order == 0) { player_movement(mx, my); }
+

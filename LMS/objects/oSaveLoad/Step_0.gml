@@ -82,6 +82,7 @@ if (death_count == (count - 1)) and (count > 1) {
 		
 		if (player_instance.local_data.wins == 3) {
 			show_debug_message("Game Over");
+			game_end();
 		}
 	}
 }

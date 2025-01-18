@@ -1,12 +1,12 @@
 function keyboard_controls(player_instance, player_order, player_device, player_adrenaline) {
 	// Inventory Toggle
-	if (player_instance.state != targetting.GUI) {
+	//if (player_instance.state != targetting.GUI) {
 		if (keyboard_check(ord("E"))) and (!isStructEmpty(player_instance.items)) {
 			player_instance.inventory_toggled = true;
 		} else {
 			player_instance.inventory_toggled = false;
 		}
-	}
+	//}
 		
 	if (!player_instance.dead) and (player_instance.state != targetting.GUI) {
 		var moving = false;

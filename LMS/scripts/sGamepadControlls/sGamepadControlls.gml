@@ -1,12 +1,12 @@
 function gamepad_controls(player_instance, player_order, player_device, player_adrenaline) {
 	// Inventory Toggle
-	if (player_instance.state != targetting.GUI) {
+	//fif (player_instance.state != targetting.GUI) {
 		if (gamepad_button_check(player_device, gp_select)) and (!isStructEmpty(player_instance.items)) {
 			player_instance.inventory_toggled = true;
 		} else {
 			player_instance.inventory_toggled = false;
 		}
-	}
+	//}
 		
 	if (!player_instance.dead) and (player_instance.state != targetting.GUI) {
 		var moving = false;

@@ -16,16 +16,18 @@ image_speed = 0;
 ready = true;
 selection_position = 0;
 selected_bar = "";
+selected_bar_sprite = noone;
 
 bars = {
 	bronzeBar : {
 		name: "Bronze Bar",
 		slug: "bronzeBar",
 		price: 5,
-		amount: 1,
+		amount: 2,
 		sprite: sBronzeBar,
 		object: oBronzeBar,
 		recipe : {
+			"coal" : 1,
 			"tinOre" : 1,
 			"copperOre" : 1
 		},
@@ -40,7 +42,7 @@ bars = {
 		object: oIronBar,
 		recipe : {
 			"coal" : 1,
-			"ironOre" : 1,
+			"ironOre" : 2,
 		},
 		type: "Smithing"
 	},
@@ -52,7 +54,8 @@ bars = {
 		sprite: sSteelBar,
 		object: oSteelBar,
 		recipe : {
-			"ironOre" : 3,
+			"coal" : 2,
+			"ironOre" : 4,
 		},
 		type: "Smithing"
 	},
@@ -64,6 +67,7 @@ bars = {
 		sprite: sMithrilBar,
 		object: oMithrilBar,
 		recipe : {
+			"coal" : 4,
 			"mithrilOre" : 1,
 			"steelOre" : 3
 		},
