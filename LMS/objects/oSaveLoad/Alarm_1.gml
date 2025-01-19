@@ -11,5 +11,7 @@ for (var i = 0; i < count; i++) {
 	if (instance_exists(oArena)) {
 		player_instance.x = oArena.x;
 		player_instance.y = oArena.x;
+		player_instance.dead = false;
+		player_instance.local_data.hp = 20;
 	}
 }

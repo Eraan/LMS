@@ -3,6 +3,7 @@ draw_set_font(fPixel);
 
 global.player_data = {};
 global.game_rounds = 1;
+global.game_state = "Active";
 
 global.res_width = 1440;
 global.res_height = 810;

@@ -1,5 +1,9 @@
 depth = -y;
 
+if (global.game_state == "Paused") {
+	exit;	
+}
+
 var mx = device_mouse_x(0);
 var my = device_mouse_y(0);
 

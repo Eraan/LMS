@@ -24,7 +24,7 @@
   ],
   "name":"sArrow",
   "nineSlice":null,
-  "origin":1,
+  "origin":9,
   "parent":{
     "name":"Weapons",
     "path":"folders/Sprites/Weapons.yy",
@@ -80,7 +80,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":8,
-    "yorigin":0,
+    "yorigin":2,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

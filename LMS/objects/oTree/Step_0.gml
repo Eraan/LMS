@@ -18,6 +18,7 @@ if (state == tree.IDLE) {
 			//global.selected_planter = id;
 			state = tree.CHOPPING;
 			start_chopping(chooseTimeToChop);
+			nearest_player.state = targetting.GUI;
 			//nearest_player.state = targetting.GUI;
 			/*
 			if global.userLevels.forestry >= 1 {

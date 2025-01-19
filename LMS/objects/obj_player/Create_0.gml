@@ -14,10 +14,24 @@ local_data = {
 	wins : 0,
 	deaths : 0,
 	hp : 20,
-	gold : 1000,
+	gold : 100,
 	strength : 0,
 	adrenaline : 1
 }
+
+/*
+var numPads = gamepad_get_device_count();
+
+if (oSaveLoad.stage == stages.PENDING) and (player_order == 0) {
+	for (var i = 0; i < numPads; i++) {
+	    if (gamepad_is_connected(i)) {
+	        if (gamepad_button_check_pressed(i, gp_start)) {
+				local_data.controls = "Gamepad";
+				local_data.input_device = i;
+			}
+	    }
+	}
+}*/
 
 global.player_data[$ player_order] = local_data;
 
@@ -52,4 +66,15 @@ attacking = false;
 dead = false;
 
 items = {};
-weapon = {};
+weapon = {
+    name: "Wooden Stick",
+	slug: "woodenStick",
+    price: 3,
+    amount: 1,
+    sprite: sWoodenStick,
+    object: oWoodenStick,
+    type: "Weapon",
+	damage: 1,
+	cooldown: 15,
+	atk_anim: sWoodenStickSwing
+};

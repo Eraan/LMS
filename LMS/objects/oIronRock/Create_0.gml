@@ -1,7 +1,7 @@
 // Inherit the parent event
 event_inherited();
 randomize();
-time_to_mine = irandom_range(30, SECOND20);
+time_to_mine = irandom_range(30, SECOND10);
 
 itemData = {
 	name : "Iron Ore",

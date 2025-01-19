@@ -8,6 +8,7 @@ function add_player(device, device_id) {
 }
 
 function save_game() {
+	/*
 	instDetails = {
 		instID : 0,
 		instName : 0,
@@ -43,29 +44,31 @@ function save_game() {
 		
 		array_push(_allItems, instDetails);
 		
-	}
+	}*/
 	
 	// Item Details
+		/*
 		var _filename1 = "itemdata.json";
 		var _json1 = json_stringify(_allItems);
 		var _buffer1 = buffer_create( string_byte_length(_json1) + 1, buffer_fixed, 1 );
 		buffer_write( _buffer1, buffer_string, _json1);
 		buffer_save( _buffer1, _filename1);
 		buffer_delete(_buffer1);
+		*/
 		
 	// Retrieve and Push User Details
 		var _saveArray = array_create(0);
-		var _player = global.userStats.user_id;
+		//var _player = global.userStats.user_id;
 	
-		global.userStats.position_x = _player.x;
-		global.userStats.position_y = _player.y;
+		//global.userStats.position_x = _player.x;
+		//global.userStats.position_y = _player.y;
 		//global.userStats.user_id = instance_find(_player, 0);
 	
 	
 		//array_push(_saveArray, global.settings);
-		array_push(_saveArray, global.userStats);
-		array_push(_saveArray, global.userLevels);
-		array_push(_saveArray, global.Items);
+		//array_push(_saveArray, global.userStats);
+		//array_push(_saveArray, global.userLevels);
+		array_push(_saveArray, global.achievements);
 	
 	// User Details
 		var _filename = "savedata.json";
@@ -78,7 +81,7 @@ function save_game() {
 }
 
 function load_game() {
-	
+	/*
 	instDetails = {
 		instID : 0,
 		instName : 0,
@@ -112,7 +115,7 @@ function load_game() {
 			var _newSprite = instDetails[$ "spriteIndex"];
 			var _newImage = instDetails[$ "instImage"];
 		}
-
+	*/
 	
 	// loading our saved data
 		var _filename = "savedata.json"
@@ -128,17 +131,17 @@ function load_game() {
 		var _loadArray = json_parse(_json);
 		
 	// Set Player Details
-		//global.settings = array_get(_loadArray, 0);
-		global.userStats = array_get(_loadArray, 0);
-		global.userLevels = array_get(_loadArray, 1);
-		global.Items = array_get(_loadArray, 2);
+		global.achievements = array_get(_loadArray, 0);
+		//global.userStats = array_get(_loadArray, 0);
+		//global.userLevels = array_get(_loadArray, 1);
+		//global.Items = array_get(_loadArray, 2);
 		
 	// Reposition Player
-		instance_destroy(oPlayer);
-		instance_create_layer(global.userStats.position_x, global.userStats.position_y, "Instances", oPlayer);
+		//instance_destroy(oPlayer);
+		//instance_create_layer(global.userStats.position_x, global.userStats.position_y, "Instances", oPlayer);
 		//oPlayer.x = global.settings.position_x;
 		//oPlayer.y = global.settings.position_y;
 		
 	// New User
-		global.userStats.new_user = false;
+		//global.userStats.new_user = false;
 }

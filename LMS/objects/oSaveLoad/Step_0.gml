@@ -11,13 +11,16 @@ if keyboard_check_pressed(ord("Q")) {
 }
 
 var count = variable_struct_names_count(global.player_data);
+var names = variable_struct_get_names(global.player_data);
 var numPads = gamepad_get_device_count();
 
 if (stage == stages.PENDING) and (count < 4) and (room == rLobby) {
 	for (var i = 0; i < numPads; i++) {
 	    if (gamepad_is_connected(i)) {
-	        if (gamepad_button_check_pressed(i, gp_start)) {
-				add_player("Gamepad", i);
+			if (!struct_has_value(global.player_data, count, names, "input_device", i)) {
+				if (gamepad_button_check_pressed(i, gp_start)) or (gamepad_button_check_pressed(i, gp_face1)) {
+					add_player("Gamepad", i);
+				}
 			}
 	    }
 	}
@@ -26,6 +29,8 @@ if (stage == stages.PENDING) and (count < 4) and (room == rLobby) {
 		add_player("Keyboard", 0);
 	}
 }
+
+game_paused();
 
 if (keyboard_check_pressed(ord("H"))) {
 	oGUI.state = screen.ADAPT;
@@ -55,7 +60,7 @@ if (stage == stages.FIGHT) and (count > 1) {
 	}
 }
 
-if (death_count == (count - 1)) and (count > 1) {
+if ((stage == stages.FIGHT) or (stage == stages.SHOWDOWN)) and (death_count == (count - 1)) and (count > 1) {
 	death_count = 0;
 	stage = stages.PREP;
 	oGUI.state = screen.SPLIT;
