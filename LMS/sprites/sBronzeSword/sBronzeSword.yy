@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Smithing",
-    "path":"folders/Sprites/Smithing.yy",
+    "name":"Weapons",
+    "path":"folders/Sprites/Weapons.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

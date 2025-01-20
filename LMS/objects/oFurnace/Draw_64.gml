@@ -1,92 +1,141 @@
-/*
-var _scale = 4;
-var mx = device_mouse_x_to_gui(0);
-var my = device_mouse_y_to_gui(0);
-var xposition = 8;
-var yposition = 8;
+var scale = 4;
 
-if (state == status.PICKING) {
-	// Draw Seed Options UI
-	if (oGUI.state == screen.SPLIT) {
-		draw_set_alpha(.75);
-		draw_rectangle_color(0, 0, display_get_gui_width(), display_get_gui_height(), c_black, c_black, c_black, c_black, 0);
-		draw_set_alpha(1);
-		draw_sprite_ext(sGenericUI, 0, view_xport[player_order] / 2, view_yport[player_order] + view_hport[player_order] / 2, _scale, _scale, 0, c_white, 1); //draw_sprite_ext(sGenericUI, 0, view_wport[0] - (display_get_gui_width() / 2), view_hport[0] - (display_get_gui_height() / 2), _scale, _scale, 0, c_white, 1);
-		show_debug_message(view_yport[player_order] + view_hport[player_order] / 2);
-		var seed_count = struct_names_count(seeds);
-		var seed_names = variable_struct_get_names(seeds);
-		array_sort(seed_names, true);
+var outline_color = c_white; // Outline color
+var outline_thickness = .5;  // How thick the outline is
+
+var nearest_player = instance_nearest(x, y, obj_player);
+var distanceFromPlayer = point_distance(nearest_player.x, nearest_player.y, x, y);
+var player_rd = nearest_player.local_data[$ "player_order"];
+var player_device = nearest_player.local_data[$ "input_device"];
+var player_controller = nearest_player.local_data[$ "controlls"];
+var player_gold = nearest_player.local_data.gold;
+
+if (state == furnace.PICKING) {
+	selection_position = ui_select_position(player_device, bars, selection_position);
 	
-		var pos1_x = view_xport[player_order]; //var pos1_x = view_wport[player_order] - (display_get_gui_width() / 2) - 72 + 8;
-		var pos1_y = view_yport[player_order]; //var pos1_y = view_hport[player_order] - (display_get_gui_height() / 2) - 112 + 4;
+	var ui_pos_x = (view_xport[player_rd] / 2 + 8);
+	var ui_pos_y = (view_yport[player_rd] / 2 + 8) + 128;
 	
-		for (var i = 0; i < seed_count; i += 1) {
-			var key = seed_names[i];
+	draw_sprite_ext(sGenericUI, 0, ui_pos_x, ui_pos_y, 4, 4, 0, c_white, 1);
+	
+	var bars_count = struct_names_count(bars);
+	var bars_names = variable_struct_get_names(bars);
+	
+	for (var i = 0; i < bars_count; i += 1) {
 		
-			show_debug_message(seeds);		
-			var name = seeds[$ key][$ "name"];
-			var price = seeds[$ key][$ "price"];
-			var sprite = seeds[$ key][$ "sprite"];
-			var grow_duration = seeds[$ key][$ "grow_duration"];
+		var slot_size = 18 * scale; // They are actually 18 x 18
+		var spacing = 1 * scale;
+		var first_slot_x = ui_pos_x + 48 * scale;
+		var first_slot_y = ui_pos_y + 5 * scale;
 		
-			// Draw Seed Info + Price
+		var key = bars_names[i];
+		var name = bars[$ key][$ "name"];
+		var price = bars[$ key][$ "price"];
+		var sprite = bars[$ key][$ "sprite"];
+		var recipe = bars[$ key][$ "recipe"];
+		var amount = bars[$ key][$ "amount"];
+		var cooldown = bars[$ key][$ "cooldown"];
 		
-			draw_text(pos1_x, pos1_y, "yoyo");
-			//draw_text_ext_transformed_color(pos1_x - 64, pos1_y, name, 1, 500, _scale, _scale, 0, c_white, c_white, c_white, c_white, 0);
 		
-			var _tile_width = 18 * _scale;
-			var _spacing = 1 * _scale;
-			var _incriment = (_tile_width + _spacing);
-		
-			// Draw Seeds
-			if (i >= 0 && i <= 3) { // First Row
-				var firstRowX = pos1_x + (i * (_incriment));
-				var firstRowY = pos1_y;
-		
+
+		// Check that Player fulfills requirements to obtain item.
+			var fullfillable = false;
+			var materials = struct_names_count(recipe);
+			var materials_required = variable_struct_get_names(recipe);
+			var player_materials = 0;
 			
-				draw_sprite_ext(asset_get_index(sprite), 0, firstRowX, firstRowY, _scale, _scale, 0, c_white, 1);
+			draw_set_color(c_black);
+			draw_text_transformed(ui_pos_x + 28, ui_pos_y + 64, "Requirements", 1, 1, 0);
 			
-				if point_in_rectangle(mx, my, firstRowX, firstRowY, firstRowX + (16 * _scale), firstRowY + (16 * _scale)) {
-					if (global.player_data[$ player][$ "gold"] >= price) {
-						draw_sprite_ext(sHoverItemAvailable, 0, firstRowX, firstRowY, _scale, _scale, 0, c_white, 1);
-					
-					} else {
-						draw_sprite_ext(sHoverItemUnavailable, 0, firstRowX, firstRowY, _scale, _scale, 0, c_white, 1);
+			for (var j = 0; j < materials; j += 1) {
+				var mat = materials_required[j];
+				
+				if (i == selection_position) {
+					draw_text_transformed(ui_pos_x + 28, ui_pos_y + 96 + (16 * j), (string(recipe[$ mat]) + " x " + string(mat)), 1, 1, 0);
+				}
+				
+				if (variable_struct_exists(nearest_player.items, mat)) {
+					if (nearest_player.items[$ mat][$ "amount"] >= recipe[$ mat]) {
+						player_materials += 1;
 					}
 				}
-			} else if (i >= 4 && i <= 7) { // Second Row
-				var secondRowX = pos1_x + ((i - 4) * (_incriment));
-				var secondRowY = pos1_y + (_tile_width + _spacing);
-		
-				draw_sprite_ext(sprite, 0, secondRowX, secondRowY, _scale, _scale, 0, c_white, 1);
+			}
 			
-				if point_in_rectangle(mx, my, secondRowX, secondRowY, secondRowX + (16 * _scale), secondRowY + (16 * _scale)) {
-					if (global.player_data[$ player][$ "gold"] >= price) {
-						draw_sprite_ext(sHoverItemAvailable, 0, secondRowX, secondRowY, _scale, _scale, 0, c_white, 1);
+			if (materials == player_materials) {
+				fullfillable = true;
+			}
+			draw_set_color(c_white);
+			
+		if (i == selection_position) {
+			// Price
+			draw_text_transformed(ui_pos_x + 28, ui_pos_y + 16, name, 1, 1, 0);
+			draw_sprite_ext(sCoin, 0, ui_pos_x + 20, ui_pos_y + 204, scale, scale, 0, c_white, 1);
+			draw_text_transformed(ui_pos_x + 48, ui_pos_y + 204, price, 1, 1, 0);
+		}
+			
+		// Item
+		if (i < 4) {
+			draw_sprite_ext(sprite, 0, first_slot_x + ((slot_size + spacing) * i), first_slot_y, scale, scale, 0, c_white, 1);
+			if (i == selection_position) {
+				if (nearest_player.local_data.gold >= price) and (fullfillable) {
+					draw_sprite_ext(sHoverItemAvailable, 0, first_slot_x + ((slot_size + spacing) * i), first_slot_y, scale, scale, 0, c_white, 1);
+						
+					if (gamepad_button_check(player_device, gp_face1)) {
+						alarm[0] = cooldown;
+						image_index = 1;
 					
-					} else {
-						draw_sprite_ext(sHoverItemUnavailable, 0, secondRowX, secondRowY, _scale, _scale, 0, c_white, 1);
+					// Save Requested Bar Details
+						selected_bar = key;
+						selected_bar_sprite = sprite;
+					
+					// Deduct Gold from Player
+						nearest_player.local_data.gold -= price;
+					
+					// Remove Materials from Player's Inventory
+						for (var k = 0; k < materials; k += 1) {
+							var mat = materials_required[k];
+				
+							nearest_player.items[$ mat][$ "amount"] -= recipe[$ mat];
+						}
+						nearest_player.state = targetting.NULL;
+						state = furnace.SMELTING;
 					}
+				} else {
+					draw_sprite_ext(sHoverItemUnavailable, 0, first_slot_x + ((slot_size + spacing) * i), first_slot_y, scale, scale, 0, c_white, 1);
 				}
-			} else if (i >= 8 && i <= 11) { // Third Row
-				var thirdRowX = pos1_x + ((i - 8) * (_incriment));
-				var thirdRowY = pos1_y + ((_tile_width + _spacing) * 2);
-			
-				draw_sprite_ext(sprite, 0, thirdRowX, thirdRowY, _scale, _scale, 0, c_white, 1);
-			
-				if point_in_rectangle(mx, my, thirdRowX, thirdRowY, thirdRowX + (16 * _scale), thirdRowY + (16 * _scale)) {
-					if (global.player_data[$ player][$ "gold"] >= price) {
-						draw_sprite_ext(sHoverItemAvailable, 0, thirdRowX, thirdRowY, _scale, _scale, 0, c_white, 1);
+			}
+		}
+		
+		if (i > 3) and (i < 8) {
+			draw_sprite_ext(sprite, 0, first_slot_x + ((slot_size + spacing) * (i - 4)), first_slot_y + (slot_size + spacing), scale, scale, 0, c_white, 1);
+			if (i == selection_position) {
+				if (nearest_player.local_data.gold >= price) and (fullfillable) {	
+					draw_sprite_ext(sHoverItemAvailable, 0, first_slot_x + ((slot_size + spacing) * (i - 4)), first_slot_y + (slot_size + spacing), scale, scale, 0, c_white, 1);
+						
+					if (gamepad_button_check(player_device, gp_face1)) {
+						alarm[0] = cooldown;
+						image_index = 1;
 					
-					} else {
-						draw_sprite_ext(sHoverItemUnavailable, 0, thirdRowX, thirdRowY, _scale, _scale, 0, c_white, 1);
+					// Save Requested Bar Details
+						selected_bar = key;
+						selected_bar_sprite = sprite;
+					
+					// Deduct Gold from Player
+						nearest_player.local_data.gold -= price;
+					
+					// Remove Materials from Player's Inventory
+						for (var k = 0; k < materials; k += 1) {
+							var mat = materials_required[k];
+				
+							nearest_player.items[$ mat][$ "amount"] -= recipe[$ mat];
+						}
+						nearest_player.state = targetting.NULL;
+						state = furnace.SMELTING;
 					}
+				} else {
+					draw_sprite_ext(sHoverItemUnavailable, 0, first_slot_x + ((slot_size + spacing) * (i - 4)), first_slot_y + (slot_size + spacing), scale, scale, 0, c_white, 1);
 				}
 			}
 		}
 	}
-	
-	// Exit Planter UI Button
-	draw_sprite_ext(sButtonBack, 0, view_wport[0] - 72, view_hport[0] - 72, 1, 1, 0, c_white, 1);
 }
-*/

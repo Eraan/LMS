@@ -74,7 +74,7 @@ weapon = {
     sprite: sWoodenStick,
     object: oWoodenStick,
     type: "Weapon",
-	damage: 1,
+	damage: 10,
 	cooldown: 15,
 	atk_anim: sWoodenStickSwing
 };

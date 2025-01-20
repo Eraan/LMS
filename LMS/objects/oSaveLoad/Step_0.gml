@@ -37,7 +37,7 @@ if (keyboard_check_pressed(ord("H"))) {
 }
 
 if (stage == stages.PENDING) and (count > 1) and (alarm[0] == "-1") {
-	alarm[0] = SECOND10;
+	alarm[0] = 120;
 }
 
 if (stage == stages.init_PREP) and (count > 1) and (alarm[1] == "-1") {
@@ -61,12 +61,12 @@ if (stage == stages.FIGHT) and (count > 1) {
 }
 
 if ((stage == stages.FIGHT) or (stage == stages.SHOWDOWN)) and (death_count == (count - 1)) and (count > 1) {
-	death_count = 0;
-	stage = stages.PREP;
-	oGUI.state = screen.SPLIT;
 	alarm[1] = SECOND30;
 	alarm[2] = -1;
 	alarm[11] = 120;
+	death_count = 0;
+	stage = stages.PREP;
+	oGUI.state = screen.SPLIT;
 	global.game_rounds += 1;
 
 	for (var i = 0; i < count; i++) {

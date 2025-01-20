@@ -1,11 +1,17 @@
-
 var scale = 8;
 var numPads = gamepad_get_device_count();
+var center_x = display_get_gui_width() / 2;
+var center_y = display_get_gui_height() / 2;
 
 for (var i = 0; i < numPads; i++) {
 	if (gamepad_is_connected(i)) {
 			
 		if (state == tab.MAIN) {
+			draw_sprite_ext(Sprite230, 0, 0, 0, .90, .90, 0, c_white, 1);
+			
+			draw_set_halign(fa_center);
+			draw_text_transformed(center_x, center_y - 256, "Incipien", 4, 4, 0);
+			
 			// Down
 			if (gamepad_button_check_pressed(i, gp_padd)) {
 				if (selection_position != -1) and (selection_position != 1) {
@@ -23,31 +29,34 @@ for (var i = 0; i < numPads; i++) {
 			
 			switch (selection_position) {
 				case 0:
-					button_select = "Play";
+					button_select = "play";
 				break;
 				case 1:
-					button_select = "Achievements";
+					button_select = "achievements";
+				break;
+				case 2:
+					button_select = "quit";
 				break;
 			}
 			
-			draw_set_halign(fa_center);
 			
-			if (button_select == "Play") {
+			
+			if (button_select == "play") {
 				if (gamepad_button_check_pressed(i, gp_face1)) {
 					room_goto(rLobby);
 				}
-				draw_sprite_ext(sGeneralButton, 1, display_get_gui_width() / 2, display_get_gui_height() / 2 + 96, scale, scale, 0, c_white, 1);
-				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 130, "Play", 2, 2, 0);
-				draw_sprite_ext(sGeneralButton, 0, display_get_gui_width() / 2, display_get_gui_height() / 2 + 240, scale, scale, 0, c_white, 1);
-				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 256, "Achievements", 2, 2, 0);
-			} else if (button_select == "Achievements") {
+				//draw_sprite_ext(sGeneralButton, 1, display_get_gui_width() / 2, display_get_gui_height() / 2 + 96, scale, scale, 0, c_white, 1);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2, "+ play +", 2, 2, 0);
+				//draw_sprite_ext(sGeneralButton, 0, display_get_gui_width() / 2, display_get_gui_height() / 2 + 240, scale, scale, 0, c_white, 1);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 64, "achievements", 2, 2, 0);
+			} else if (button_select == "achievements") {
 				if (gamepad_button_check_pressed(i, gp_face1)) {
 					state = tab.ACHIEVEMENTS;
 				}
-				draw_sprite_ext(sGeneralButton, 0, display_get_gui_width() / 2, display_get_gui_height() / 2 + 96, scale, scale, 0, c_white, 1);
-				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 114, "Play", 2, 2, 0);
-				draw_sprite_ext(sGeneralButton, 1, display_get_gui_width() / 2, display_get_gui_height() / 2 + 240, scale, scale, 0, c_white, 1);
-				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 272, "Achievements", 2, 2, 0);
+				//draw_sprite_ext(sGeneralButton, 0, display_get_gui_width() / 2, display_get_gui_height() / 2 + 96, scale, scale, 0, c_white, 1);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2, "play", 2, 2, 0);
+				//draw_sprite_ext(sGeneralButton, 1, display_get_gui_width() / 2, display_get_gui_height() / 2 + 240, scale, scale, 0, c_white, 1);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 64, "+ achievements +", 2, 2, 0);
 			}
 			
 			draw_set_halign(fa_left);

@@ -9,7 +9,7 @@ if (oSaveLoad.stage != stages.FIGHT) {
 		oSaveLoad.enemy_count -= 1;
 		var gold_drop = instance_create_layer(x, y, "Instances", oGold) 
 		with (gold_drop) {
-			amount = 15;
+			amount = 5;
 		}
 	}
 	
@@ -68,7 +68,13 @@ if (oSaveLoad.stage != stages.FIGHT) {
 			}
 		}
 	}
-} else {
+}
+
+if (oSaveLoad.stage == stages.FIGHT) {
 	instance_destroy();
 	oSaveLoad.enemy_count -= 1;
+	var gold_drop = instance_create_layer(x, y, "Instances", oGold) 
+	with (gold_drop) {
+		amount = 5;
+	}
 }

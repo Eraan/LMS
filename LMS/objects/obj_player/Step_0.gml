@@ -33,15 +33,20 @@ if (oSaveLoad.stage != stages.PENDING) {
 		var player_ordr = global.player_data[$ i][$ "player_order"];
 		var player_adrenaline = global.player_data[$ i][$ "adrenaline"] / player_count;
 	
+
 		if (global.player_data[$ i][$ "hp"] <= 0) and (player_instance.dead == false) {
+			if (oSaveLoad.stage == stages.PREP) {
+				player_instance.alarm[1] = 120;	
+			} else {
+				oSaveLoad.death_count += 1;
+			}
+			
 			player_instance.sprite_index = asset_get_index("sPlayerDead" + string(player_order));
-			//alarm[1] = 300;
 			player_instance.dead = true;
-			oSaveLoad.death_count += 1;
 			global.player_data[$ i][$ "deaths"] += 1;
 			var gold_drop = instance_create_layer(x, y, "Instances", oGold) 
 			with (gold_drop) {
-				amount = 5;
+				amount = 15;
 			}
 		}
 		
@@ -58,4 +63,3 @@ if (oSaveLoad.stage != stages.PENDING) {
 }
 
 //if (player_order == 0) { player_movement(mx, my); }
-

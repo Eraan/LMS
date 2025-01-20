@@ -21,28 +21,13 @@ if (state == furnace.EMPTY) {
 }
 
 if (state == furnace.PICKING) {
-	// Scrolling Up
-	if (mouse_wheel_up()) or (gamepad_button_check_pressed(player_device, gp_padu)) {
-		selection_position += 1;
-	}
 	
-	if (selection_position > (struct_names_count(bars) - 1)) and (mouse_wheel_up() or gamepad_button_check_pressed(player_device, gp_padu)) {
-		selection_position = 0;
-	}
-	
-	// Scrolling Down
-	if (mouse_wheel_down()) or (gamepad_button_check_pressed(player_device, gp_padd)) {
-		selection_position -= 1;
-	}
-	
-	if (selection_position == -1) and (mouse_wheel_down() or gamepad_button_check_pressed(player_device, gp_padd)) {
-		selection_position = struct_names_count(bars) - 1
-	}
 }
 
 if (state == furnace.PICKING) and (mouse_check_button_pressed(mb_right) or (gamepad_button_check(player_device, gp_face2))) {
 	state = furnace.EMPTY;
 	nearest_player.state = targetting.NULL;
+	selection_position = 0;
 	
 	/*
 	var mx_gui = device_mouse_x_to_gui(0);
