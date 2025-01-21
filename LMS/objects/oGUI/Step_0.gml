@@ -1,4 +1,4 @@
-if (instance_exists(obj_player)) {
+if (instance_exists(obj_player)) and (room != rLobby) {
 	if (state == screen.SOLO) {
 		var player_instance = obj_player;
 	
@@ -91,11 +91,31 @@ if (instance_exists(obj_player)) {
 	
 	var _cam = camera_create_view(0, 0, global.res_width / 3, global.res_height / 3);
 		
-	camera_set_view_target(_cam, oPlayerStart);
+	camera_set_view_target(_cam, oGUI);
 	camera_set_view_border(_cam, global.res_width / 6, global.res_height / 6);
 
 	view_hport[0] = global.res_height;
 	view_wport[0] = global.res_width;
 
 	view_camera[0] = _cam;
+}
+
+
+if (oSaveLoad.stage == stages.PENDING) {
+	var count = variable_struct_names_count(global.player_data);
+		
+	if (count >= 1) and (alarm[0] = -1) {
+		alarm[0] = 240;
+		var player_one = instance_create_layer(0, 200, "Instances", oNullObjection);
+			
+		with player_one {
+			
+			sprite_index = sPlayerRight0;	
+			speed = 0.5;
+			image_speed = 0.5;
+			//x += .5;
+			move_towards_point(360, 200, speed);
+			show_debug_message(x);
+		}
+	}
 }

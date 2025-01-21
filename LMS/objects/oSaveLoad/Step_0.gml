@@ -1,3 +1,5 @@
+steam_update();
+
 if keyboard_check_pressed(ord("1")) {save_game();};
 
 if keyboard_check_pressed(ord("4")) {load_game();};
@@ -37,7 +39,7 @@ if (keyboard_check_pressed(ord("H"))) {
 }
 
 if (stage == stages.PENDING) and (count > 1) and (alarm[0] == "-1") {
-	alarm[0] = 120;
+	alarm[0] = SECOND10;
 }
 
 if (stage == stages.init_PREP) and (count > 1) and (alarm[1] == "-1") {

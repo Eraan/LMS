@@ -43,7 +43,8 @@ function game_paused_gui() {
 			if (pause_button = "Play") {
 				global.game_state = "Active";
 			} else if (pause_button = "Exit") {
-				game_end();	
+				global.is_game_restarting = true;
+				game_restart();
 			}
 		}
 	}

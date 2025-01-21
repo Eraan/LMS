@@ -1,6 +1,7 @@
 //window_set_fullscreen(true);
 draw_set_font(fPixel);
 
+global.is_game_restarting = false;
 global.player_data = {};
 global.game_rounds = 1;
 global.game_state = "Active";

@@ -1,10 +1,11 @@
 /// Currently Holding Gamepad Join Test
-/*var numPads = gamepad_get_device_count();
+/*
+var numPads = gamepad_get_device_count();
 for (var i = 0; i < numPads; i++) {
     if (gamepad_is_connected(i)) {
-        show_message(string(i) + ": " + gamepad_get_description(i));
+        show_debug_message(string(i) + ": " + gamepad_get_description(i));
     } else {
-        show_message("No Gamepad Connected");
+        //show_debug_message("No Gamepad Connected");
     }
 }
 */
