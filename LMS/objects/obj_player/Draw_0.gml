@@ -1,4 +1,5 @@
 // Draw Outline
+/*
 var outline_color = c_white; // Outline color
 var outline_thickness = .5;  // How thick the outline is
 	
@@ -8,6 +9,7 @@ draw_sprite_ext(sprite_index, image_index, x + outline_thickness, y - outline_th
 draw_sprite_ext(sprite_index, image_index, x - outline_thickness, y + outline_thickness, 1, 1, 0, outline_color, .75); // Bottom-left
 draw_sprite_ext(sprite_index, image_index, x + outline_thickness, y + outline_thickness, 1, 1, 0, outline_color, .75); // Bottom-right
 gpu_set_fog(false, outline_color, 0, 0);
+*/
 
 draw_self();
 

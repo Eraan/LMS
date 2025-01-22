@@ -7,14 +7,14 @@ for (var i = 0; i < numPads; i++) {
 	if (gamepad_is_connected(i)) {
 			
 		if (state == tab.MAIN) {
-			draw_sprite_ext(Sprite230, 0, 0, 0, .90, .90, 0, c_white, 1);
+			//draw_sprite_ext(Sprite230, 0, 0, 0, .90, .90, 0, c_white, 1);
 			
 			draw_set_halign(fa_center);
 			draw_text_transformed(center_x, center_y - 256, "Incipien", 4, 4, 0);
 			
 			// Down
 			if (gamepad_button_check_pressed(i, gp_padd)) {
-				if (selection_position != -1) and (selection_position != 1) {
+				if (selection_position != -1) and (selection_position != 2) {
 					selection_position += 1;
 				}
 				
@@ -45,18 +45,23 @@ for (var i = 0; i < numPads; i++) {
 				if (gamepad_button_check_pressed(i, gp_face1)) {
 					room_goto(rLobby);
 				}
-				//draw_sprite_ext(sGeneralButton, 1, display_get_gui_width() / 2, display_get_gui_height() / 2 + 96, scale, scale, 0, c_white, 1);
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2, "+ play +", 2, 2, 0);
-				//draw_sprite_ext(sGeneralButton, 0, display_get_gui_width() / 2, display_get_gui_height() / 2 + 240, scale, scale, 0, c_white, 1);
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 64, "achievements", 2, 2, 0);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 128, "quit", 2, 2, 0);
 			} else if (button_select == "achievements") {
 				if (gamepad_button_check_pressed(i, gp_face1)) {
 					state = tab.ACHIEVEMENTS;
 				}
-				//draw_sprite_ext(sGeneralButton, 0, display_get_gui_width() / 2, display_get_gui_height() / 2 + 96, scale, scale, 0, c_white, 1);
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2, "play", 2, 2, 0);
-				//draw_sprite_ext(sGeneralButton, 1, display_get_gui_width() / 2, display_get_gui_height() / 2 + 240, scale, scale, 0, c_white, 1);
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 64, "+ achievements +", 2, 2, 0);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 128, "quit", 2, 2, 0);
+			} else if (button_select == "quit") {
+				if (gamepad_button_check_pressed(i, gp_face1)) {
+					game_end();
+				}
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2, "play", 2, 2, 0);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 64, "achievements", 2, 2, 0);
+				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 128, "+ quit +", 2, 2, 0);
 			}
 			
 			draw_set_halign(fa_left);

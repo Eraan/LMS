@@ -110,7 +110,7 @@ if (oSaveLoad.stage == stages.PENDING) {
 			
 		with player_one {
 			
-			sprite_index = sPlayerRight0;	
+			sprite_index = asset_get_index("sPlayerRight" + string(irandom_range(0, 3)));	
 			speed = 0.5;
 			image_speed = 0.5;
 			//x += .5;

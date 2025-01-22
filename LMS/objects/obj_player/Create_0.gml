@@ -2,6 +2,9 @@ player_order = (instance_number(obj_player) - 1);
 player_character_str = "sPlayer" + string(player_order);
 player_avatar_str = "sPlayerAvtr" + string(player_order);
 player_avatar = asset_get_index(player_avatar_str);
+last_direction = "down";
+idle_timer = undefined;
+idle_action = irandom_range(0, 3);
 sprite_index = asset_get_index(player_character_str);
 image_speed = 1;
 
