@@ -30,6 +30,7 @@ enum stages {
 	PREP
 }
 
+ready_start = false;
 stage = stages.PENDING;
 leader = noone;
 death_count = 0;

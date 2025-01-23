@@ -106,16 +106,16 @@ if (oSaveLoad.stage == stages.PENDING) {
 		
 	if (count >= 1) and (alarm[0] = -1) {
 		alarm[0] = 240;
-		var player_one = instance_create_layer(0, 200, "Instances", oNullObjection);
+		var player_one = instance_create_layer(50, global.res_height / 2 - 95, "Instances", oNullObjection);
 			
 		with player_one {
 			
-			sprite_index = asset_get_index("sPlayerRight" + string(irandom_range(0, 3)));	
+			sprite_index = asset_get_index("sPlayerRight" + string(irandom_range(0, (count - 1))));	
 			speed = 0.5;
 			image_speed = 0.5;
 			//x += .5;
-			move_towards_point(360, 200, speed);
-			show_debug_message(x);
+			move_towards_point(360, global.res_height / 2 - 95, speed);
 		}
 	}
 }
+

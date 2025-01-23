@@ -20,7 +20,7 @@ if (stage == stages.PENDING) and (count < 4) and (room == rLobby) {
 	for (var i = 0; i < numPads; i++) {
 	    if (gamepad_is_connected(i)) {
 			if (!struct_has_value(global.player_data, count, names, "input_device", i)) {
-				if (gamepad_button_check_pressed(i, gp_start)) or (gamepad_button_check_pressed(i, gp_face1)) {
+				if (gamepad_button_check_pressed(i, gp_face1)) {
 					add_player("Gamepad", i);
 				}
 			}
@@ -30,6 +30,8 @@ if (stage == stages.PENDING) and (count < 4) and (room == rLobby) {
 	if (keyboard_check_pressed(ord("P"))) {
 		add_player("Keyboard", 0);
 	}
+	
+	
 }
 
 game_paused();
@@ -39,7 +41,18 @@ if (keyboard_check_pressed(ord("H"))) {
 }
 
 if (stage == stages.PENDING) and (count > 1) and (alarm[0] == "-1") {
-	alarm[0] = SECOND10;
+	ready_start = true;
+	
+	for (var i = 0; i < count; i++) {
+		var player_instance = global.player_data[$ i][$ "player_instance"];
+		var input_device = global.player_data[$ i][$ "input_device"];
+		
+		if (gamepad_button_check_pressed(i, gp_start)) {
+			oGUI.image_alpha = 0;
+			alarm[0] = SECOND10;
+			ready_start = false;
+		}
+	}
 }
 
 if (stage == stages.init_PREP) and (count > 1) and (alarm[1] == "-1") {

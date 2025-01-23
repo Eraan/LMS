@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sound_overworld",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":0,
+  "bitRate":128,
+  "compression":3,
+  "conversionMode":0,
+  "duration":72.96,
+  "name":"sound_overworld",
+  "parent":{
+    "name":"JDSherbert",
+    "path":"folders/Sounds/JDSherbert.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sound_overworld.mp3",
+  "type":0,
+  "volume":0.15,
+}

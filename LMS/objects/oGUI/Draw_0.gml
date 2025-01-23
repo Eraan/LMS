@@ -1,1 +1,4 @@
-draw_rectangle(x, y, x + 16, y + 16, true);
+if (room == rLobby) {
+	draw_self();
+	image_speed = .5;
+}

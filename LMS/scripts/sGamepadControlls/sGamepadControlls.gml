@@ -18,22 +18,22 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 		if (abs_haxis > abs_vaxis) {
 			if (gamepad_axis_value(player_device, gp_axislh) < 0) and (!place_meeting(player_instance.x - 2, player_instance.y, oCollision)) {
 				player_instance.sprite_index = asset_get_index("sPlayerLeft" + string(player_order));
-				player_instance.last_direction = "left";
+				player_instance.last_direction = "Left";
 			}
 
 			if (gamepad_axis_value(player_device, gp_axislh) > 0) and (!place_meeting(player_instance.x + 2, player_instance.y, oCollision)) {
 				player_instance.sprite_index = asset_get_index("sPlayerRight" + string(player_order));
-				player_instance.last_direction = "right";
+				player_instance.last_direction = "Right";
 			}
 		} else if (abs_vaxis >= abs_haxis) {
 			if (gamepad_axis_value(player_device, gp_axislv) > 0) and (!place_meeting(player_instance.x, player_instance.y + 2, oCollision)) {
 				player_instance.sprite_index = asset_get_index("sPlayerDown" + string(player_order));
-				player_instance.last_direction = "down";
+				player_instance.last_direction = "Down";
 			}
 
 			if (gamepad_axis_value(player_device, gp_axislv) < 0) and (!place_meeting(player_instance.x, player_instance.y - 2, oCollision)) {
 				player_instance.sprite_index = asset_get_index("sPlayerUp" + string(player_order));
-				player_instance.last_direction = "up";
+				player_instance.last_direction = "Up";
 			}
 		}
 
@@ -106,8 +106,106 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 		if (moving == false) {
 			player_instance.move_state = move.IDLE;
 			
+			if (player_instance.idle_timer == undefined) {
+					player_instance.idle_timer = irandom_range(480, 3000);
+				}
+					
+				if (player_instance.idle_timer > 0) {
+		            player_instance.idle_timer -= 1;
+						
+					if (player_instance.sprite_index != (asset_get_index("sPlayerIdle" + string(player_instance.last_direction) + string(player_order) + "_action" + string(player_instance.idle_action)))) {
+						player_instance.sprite_index = asset_get_index("sPlayerIdle" + string(player_instance.last_direction) + string(player_order) + "_rest");	
+					}
+		        } else {
+		            // Trigger the action animation
+				    //if (player_instance.sprite_index != asset_get_index("sPlayerIdleDown" + string(player_order) + "_action" + string(random_action))) {
+				        player_instance.sprite_index = asset_get_index("sPlayerIdle" + string(player_instance.last_direction) + string(player_order) + "_action" + string(player_instance.idle_action));
+				        player_instance.image_speed = 0.4;
+				    //}
+
+				    // Check if the action animation has finished
+				    if (player_instance.image_index >= (sprite_get_number(player_instance.sprite_index) - 1)) {
+				        // Reset to resting state
+				        player_instance.sprite_index = asset_get_index("sPlayerIdle" + string(player_instance.last_direction) + string(player_order) + "_rest");
+				        player_instance.image_speed = 0;
+
+				        // Reset idle timer and random action
+				        player_instance.idle_timer = irandom_range(480, 3000);
+						player_instance.idle_action = irandom_range(0, 3);
+				    }
+		        }
+			
+			/*
 			switch (player_instance.last_direction) {
 				case "left":
+					if (player_instance.idle_timer == undefined) {
+						player_instance.idle_timer = irandom_range(480, 3000);
+					}
+					
+					if (player_instance.idle_timer > 0) {
+		                player_instance.idle_timer -= 1;
+						
+						if (player_instance.sprite_index != (asset_get_index("sPlayerIdleLeft" + string(player_order) + "_action" + string(player_instance.idle_action)))) {
+							player_instance.sprite_index = asset_get_index("sPlayerIdleLeft" + string(player_order) + "_rest");	
+						}
+		            } else {
+		                // Trigger the action animation
+				        //if (player_instance.sprite_index != asset_get_index("sPlayerIdleDown" + string(player_order) + "_action" + string(random_action))) {
+				            player_instance.sprite_index = asset_get_index("sPlayerIdleLeft" + string(player_order) + "_action" + string(player_instance.idle_action));
+				            player_instance.image_speed = 0.4;
+				        //}
+
+				        // Check if the action animation has finished
+				        if (player_instance.image_index >= (sprite_get_number(player_instance.sprite_index) - 1)) {
+				            // Reset to resting state
+				            player_instance.sprite_index = asset_get_index("sPlayerIdleLeft" + string(player_order) + "_rest");
+				            player_instance.image_speed = 0;
+
+				            // Reset idle timer and random action
+				            player_instance.idle_timer = irandom_range(480, 3000);
+							player_instance.idle_action = irandom_range(0, 3);
+				        }
+		            }
+				break;
+				case "right":
+					if (alarm[2] == -1) {
+						alarm[2] = 240;
+						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action" + string(irandom_range(1,2)));
+					} else {
+						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action0");
+					}
+				break;
+				case "up":
+					if (player_instance.idle_timer == undefined) {
+						player_instance.idle_timer = irandom_range(480, 3000);
+					}
+					
+					if (player_instance.idle_timer > 0) {
+		                player_instance.idle_timer -= 1;
+						
+						if (player_instance.sprite_index != (asset_get_index("sPlayerIdleUp" + string(player_order) + "_action" + string(player_instance.idle_action)))) {
+							player_instance.sprite_index = asset_get_index("sPlayerIdleUp" + string(player_order) + "_rest");	
+						}
+		            } else {
+		                // Trigger the action animation
+				        //if (player_instance.sprite_index != asset_get_index("sPlayerIdleDown" + string(player_order) + "_action" + string(random_action))) {
+				            player_instance.sprite_index = asset_get_index("sPlayerIdleUp" + string(player_order) + "_action" + string(player_instance.idle_action));
+				            player_instance.image_speed = 0.4;
+				        //}
+
+				        // Check if the action animation has finished
+				        if (player_instance.image_index >= (sprite_get_number(player_instance.sprite_index) - 1)) {
+				            // Reset to resting state
+				            player_instance.sprite_index = asset_get_index("sPlayerIdleUp" + string(player_order) + "_rest");
+				            player_instance.image_speed = 0;
+
+				            // Reset idle timer and random action
+				            player_instance.idle_timer = irandom_range(480, 3000);
+							player_instance.idle_action = irandom_range(0, 3);
+				        }
+		            }
+				break;
+				case "down":
 					if (player_instance.idle_timer == undefined) {
 						player_instance.idle_timer = irandom_range(480, 3000);
 					}
@@ -137,32 +235,7 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 				        }
 		            }
 				break;
-				case "right":
-					if (alarm[2] == -1) {
-						alarm[2] = 240;
-						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action" + string(irandom_range(1,2)));
-					} else {
-						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action0");
-					}
-				break;
-				case "up":
-					if (alarm[2] == -1) {
-						alarm[2] = 240;
-						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action" + string(irandom_range(1,2)));
-					} else {
-						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action0");
-					}
-				break;
-				case "down":
-					if (alarm[2] == -1) {
-						alarm[2] = 240;
-						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action1");
-						show_debug_message("Idle Movement Occured");
-					} else {
-						player_instance.sprite_index = asset_get_index("sPlayerIdleDown" + string(player_order) + "_action0");
-					}
-				break;
-			}
+			}*/
 		}
 	}
 }

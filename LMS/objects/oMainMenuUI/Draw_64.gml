@@ -92,9 +92,9 @@ for (var i = 0; i < numPads; i++) {
 				draw_text_color(96, 48 + (j * (16 * scale + 8)), reward, c_orange, c_orange, c_orange, c_orange, 1);
 			}
 		}
-		
 	}
 }
 
 
 
+draw_text_transformed(16, display_get_gui_height() - 16, "Music by @JDSherbert", 4, 4, 0);

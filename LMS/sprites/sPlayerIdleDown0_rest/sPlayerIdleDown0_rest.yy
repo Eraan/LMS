@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Idle",
-    "path":"folders/Sprites/Player Direction/0/Idle.yy",
+    "name":"Down",
+    "path":"folders/Sprites/Player Direction/0/Idle/Down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

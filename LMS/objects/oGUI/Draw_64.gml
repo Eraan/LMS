@@ -1,3 +1,11 @@
+if (oSaveLoad.ready_start == true) {
+	draw_set_font(font_announcement);
+	draw_set_halign(fa_center);
+	draw_text(view_wport[0] / 2, view_hport[0] / 2 - 16, "press start to begin game");
+	draw_set_halign(fa_left);
+	draw_set_font(fPixel);
+}
+
 if (instance_exists(obj_player)) {
 
 	//draw_text_ext_transformed(0, 0, global.player_data, 16, 500, 1, 1, 0);
@@ -80,9 +88,9 @@ switch (oSaveLoad.stage) {
 
 		for (var i = 0; i < 4; i++) {
 			if (count >= (i + 1)) {
-				draw_sprite_ext(sPlayerSlot, (i + 2), 32 + (64 * i), view_hport[0] - 96, 4, 4, 0, c_white, 1);
+				draw_sprite_ext(sPlayerSlot, (i + 2), 16 + (64 * i), 24, 4, 4, 0, c_white, 1);
 			} else {
-				draw_sprite_ext(sPlayerSlot, 0, 32 + (64 * i), view_hport[0] - 96, 4, 4, 0, c_white, 1);	
+				draw_sprite_ext(sPlayerSlot, 0, 16 + (64 * i), 24, 4, 4, 0, c_white, 1);	
 			}
 		}
 		
@@ -90,7 +98,7 @@ switch (oSaveLoad.stage) {
 			draw_text_ext_transformed(view_wport[0] / 2, view_hport[0] / 2 - 16, round(oSaveLoad.alarm[0] / 60), 32, 500, 1, 1, 0);
 		} else {
 			draw_set_font(fPixel);
-			draw_text(view_wport[0] / 2, view_hport[0] - 64, "waiting for more players...");
+			draw_text(view_wport[0] / 2, 48, "press A to join");
 			draw_set_font(font_announcement);
 		}
 	break;
