@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":3,
   "conversionMode":0,
-  "duration":0.408,
+  "duration":1.332245,
   "name":"woodChopSound",
   "parent":{
     "name":"Sounds",

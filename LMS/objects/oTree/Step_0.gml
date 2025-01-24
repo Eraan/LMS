@@ -18,7 +18,7 @@ if (state == tree.IDLE) {
 			//global.selected_planter = id;
 			state = tree.CHOPPING;
 			start_chopping(chooseTimeToChop);
-			nearest_player.state = targetting.GUI;
+			player.state = targetting.GUI;
 			//nearest_player.state = targetting.GUI;
 			/*
 			if global.userLevels.forestry >= 1 {
@@ -35,8 +35,8 @@ if (state == tree.IDLE) {
 	}
 }
 
-if (state == tree.CHOPPING) {
-	//
+if (state == tree.CHOPPING) and (player != noone) {
+	player.move_state = move.CHOPPING;
 }
 
 switch chooseSprite {
@@ -59,7 +59,7 @@ if ready == false && image_index == 0 && global.Chopping == false {
 	alarm[0] = -1;
 	ready = true;
 }
-*/
+
 
 if (alarm[0] > 0) and (distanceFromPlayer > 18) and (player == noone) {
 	stop_chopping(0);
@@ -68,3 +68,4 @@ if (alarm[0] > 0) and (distanceFromPlayer > 18) and (player == noone) {
 	alarm[0] = -1;
 	ready = true;
 }
+*/

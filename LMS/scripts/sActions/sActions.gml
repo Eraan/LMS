@@ -55,7 +55,7 @@ function stop_mining(player_direction, chosen_time) {
 	}
 	if player_direction == 180 {
 		with player {
-			sprite_index = sPlayerLeft0;
+			sprite_index = sPlayerLeftTest;
 			image_index = 1;
 			image_speed = 0;
 		}
@@ -71,7 +71,16 @@ function stop_mining(player_direction, chosen_time) {
 
 // Forestry
 function start_chopping(chosen_time) {
-	audio_play_sound(woodChopSound, 10, true);
+	/*
+	if (event_data[? "event_type"] == "sprite event") {
+	    switch (event_data[? "message"]) {
+	        case "Hit":
+	            audio_play_sound(woodChopSound, 10, true);
+	        break;
+	    }
+	}*/
+	
+	//audio_play_sound(woodChopSound, 10, true);
 	alarm[0] = chosen_time;
 }
 	

@@ -1,8 +1,6 @@
 var count = variable_struct_names_count(global.player_data);
-show_debug_message(count);
 
 for (var i = 0; i < count; i++) {
-	show_debug_message(global.player_data[$ i][$ "player_instance"]);
 	var player_instance = global.player_data[$ i][$ "player_instance"];
 	var player_start_pos = instance_find(oPlayerStart, i);
 	

@@ -24,4 +24,4 @@
 #macro MINUTE2 7200 // 2 Minutes
 #macro MINUTE3 10800 // 3 Minutes
 #macro MINUTE4 14400 // 4 Minutes
-#macro MINUTE5 18000 // 5 Minutes
+#macro MINUTE5 18000

@@ -1,2 +1,4 @@
-image_index = 1;
-state = tree.DEAD;
+image_index = 0;
+state = tree.IDLE;
+player = noone;
+player_order = noone;

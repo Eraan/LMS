@@ -103,7 +103,7 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 			}
 		}
 			
-		if (moving == false) {
+		if (moving == false) and (player_instance.move_state != move.IDLE) {
 			player_instance.move_state = move.IDLE;
 			
 			if (player_instance.idle_timer == undefined) {
@@ -127,7 +127,7 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 				    if (player_instance.image_index >= (sprite_get_number(player_instance.sprite_index) - 1)) {
 				        // Reset to resting state
 				        player_instance.sprite_index = asset_get_index("sPlayerIdle" + string(player_instance.last_direction) + string(player_order) + "_rest");
-				        player_instance.image_speed = 0;
+				        //player_instance.image_speed = 0;
 
 				        // Reset idle timer and random action
 				        player_instance.idle_timer = irandom_range(480, 3000);

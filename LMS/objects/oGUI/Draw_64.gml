@@ -1,4 +1,5 @@
 if (oSaveLoad.ready_start == true) {
+	draw_sprite_stretched(sPressStart, 0, 0, view_hport[0] / 2 - 32, view_wport[0], 80);
 	draw_set_font(font_announcement);
 	draw_set_halign(fa_center);
 	draw_text(view_wport[0] / 2, view_hport[0] / 2 - 16, "press start to begin game");

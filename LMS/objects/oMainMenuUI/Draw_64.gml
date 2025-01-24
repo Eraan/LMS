@@ -7,7 +7,7 @@ for (var i = 0; i < numPads; i++) {
 	if (gamepad_is_connected(i)) {
 			
 		if (state == tab.MAIN) {
-			//draw_sprite_ext(Sprite230, 0, 0, 0, .90, .90, 0, c_white, 1);
+			draw_sprite_ext(Sprite230, 0, 0, 0, 4, 4, 0, c_white, 1);
 			
 			draw_set_halign(fa_center);
 			draw_text_transformed(center_x, center_y - 256, "Incipien", 4, 4, 0);
@@ -16,6 +16,7 @@ for (var i = 0; i < numPads; i++) {
 			if (gamepad_button_check_pressed(i, gp_padd)) {
 				if (selection_position != -1) and (selection_position != 2) {
 					selection_position += 1;
+					audio_play_sound(sound_hover, 10, false);
 				}
 				
 			}
@@ -24,6 +25,7 @@ for (var i = 0; i < numPads; i++) {
 			if (gamepad_button_check_pressed(i, gp_padu)) {
 				if (selection_position != 0) {
 					selection_position -= 1;
+					audio_play_sound(sound_hover, 10, false);
 				}
 			}
 			
@@ -44,6 +46,7 @@ for (var i = 0; i < numPads; i++) {
 			if (button_select == "play") {
 				if (gamepad_button_check_pressed(i, gp_face1)) {
 					room_goto(rLobby);
+					audio_play_sound(sound_select, 10, false);
 				}
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2, "+ play +", 2, 2, 0);
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 64, "achievements", 2, 2, 0);
@@ -51,6 +54,7 @@ for (var i = 0; i < numPads; i++) {
 			} else if (button_select == "achievements") {
 				if (gamepad_button_check_pressed(i, gp_face1)) {
 					state = tab.ACHIEVEMENTS;
+					audio_play_sound(sound_select, 10, false);
 				}
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2, "play", 2, 2, 0);
 				draw_text_transformed(display_get_gui_width() / 2, display_get_gui_height() / 2 + 64, "+ achievements +", 2, 2, 0);
@@ -68,8 +72,11 @@ for (var i = 0; i < numPads; i++) {
 		}
 		
 		if (state == tab.ACHIEVEMENTS) {
+			draw_sprite_ext(Sprite230, 0, 0, 0, 4, 4, 0, c_white, .25);
+			
 			if (gamepad_button_check_pressed(i, gp_face2)) {
 				state = tab.MAIN;
+				audio_play_sound(sound_select, 10, false);
 			}
 				
 			scale = 4;
@@ -94,7 +101,5 @@ for (var i = 0; i < numPads; i++) {
 		}
 	}
 }
-
-
 
 draw_text_transformed(16, display_get_gui_height() - 16, "Music by @JDSherbert", 4, 4, 0);

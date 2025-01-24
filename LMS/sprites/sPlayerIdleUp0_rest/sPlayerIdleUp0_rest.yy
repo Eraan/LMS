@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Running",
-    "path":"folders/Sprites/Player Direction/0/Running.yy",
+    "name":"Up",
+    "path":"folders/Sprites/Player Direction/0/Idle/Up.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -16,7 +16,9 @@ if (state == mining_state.IDLE) {
 			player = player_instance;
 			//global.selected_planter = id;
 			state = mining_state.MINING;
-			start_chopping(time_to_mine);
+			//start_chopping(time_to_mine);
+			audio_play_sound(miningSound, 10, true);
+			alarm[0] = time_to_mine;
 			nearest_player.state = targetting.GUI;
 		}
 	} else {

@@ -22,6 +22,7 @@ if (stage == stages.PENDING) and (count < 4) and (room == rLobby) {
 			if (!struct_has_value(global.player_data, count, names, "input_device", i)) {
 				if (gamepad_button_check_pressed(i, gp_face1)) {
 					add_player("Gamepad", i);
+					audio_play_sound(sound_player_join, 10, false);
 				}
 			}
 	    }
@@ -49,8 +50,9 @@ if (stage == stages.PENDING) and (count > 1) and (alarm[0] == "-1") {
 		
 		if (gamepad_button_check_pressed(i, gp_start)) {
 			oGUI.image_alpha = 0;
-			alarm[0] = SECOND10;
+			alarm[0] = 300;
 			ready_start = false;
+			audio_play_sound(sound_start, 10, false);
 		}
 	}
 }
