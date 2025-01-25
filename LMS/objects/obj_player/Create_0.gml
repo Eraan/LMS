@@ -4,7 +4,7 @@ player_avatar_str = "sPlayerAvtr" + string(player_order);
 player_avatar = asset_get_index(player_avatar_str);
 last_direction = "Down";
 idle_timer = undefined;
-idle_action = irandom_range(0, 3);
+idle_action = irandom_range(0, 1);
 sprite_index = asset_get_index(player_character_str);
 image_speed = 1;
 
@@ -70,14 +70,19 @@ dead = false;
 
 items = {};
 weapon = {
-    name: "Wooden Stick",
-	slug: "woodenStick",
-    price: 3,
-    amount: 1,
-    sprite: sWoodenStick,
-    object: oWoodenStick,
-    type: "Weapon",
-	damage: 10,
-	cooldown: 15,
-	atk_anim: sWoodenStickSwing
+	name: "Bronze Sword",
+	slug: "bronzeSword",
+	price: 20,
+	amount: 1,
+	sprite: sBronzeSword,
+	object: oBronzeSword,
+	recipe : {
+		"bronzeBar" : 3,
+	},
+	type: "Weapon",
+	damage: 4,
+	cooldown: 30,
+	style: "Jab",
+	augments: {},
+	atk_anim: sBronzeSwordSwing
 };

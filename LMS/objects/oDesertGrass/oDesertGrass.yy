@@ -9,8 +9,8 @@
   "name":"oDesertGrass",
   "overriddenProperties":[],
   "parent":{
-    "name":"Core",
-    "path":"folders/Objects/Core.yy",
+    "name":"Forrestry",
+    "path":"folders/Objects/Core/Forrestry.yy",
   },
   "parentObjectId":null,
   "persistent":false,

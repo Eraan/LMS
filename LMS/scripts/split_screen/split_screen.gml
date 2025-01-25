@@ -15,6 +15,65 @@ function split_screen(player_avtr_pos_x, player_avtr_pos_y, player_instance, pla
 	draw_text_ext(player_avtr_pos_x + 100, player_avtr_pos_y + 64, player_deaths, 16, player_icon_width); // DEATHS
 	draw_text_ext(player_avtr_pos_x + 164, player_avtr_pos_y + 64, player_hp, 16, player_icon_width); // HP
 	draw_text_ext(player_avtr_pos_x + 220, player_avtr_pos_y + 64, player_wins, 16, player_icon_width); // WINS
+	
+	// Player Active Skill
+	var number_of_skills = sprite_get_number(sActiveSkill) / 2;
+	
+	switch (player_instance.move_state) {
+		case 0:
+			draw_sprite(sActiveSkill, 0 + number_of_skills, player_avtr_pos_x + 256, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 1, player_avtr_pos_x + 256 + 16 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 2, player_avtr_pos_x + 256 + 32 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 3, player_avtr_pos_x + 256 + 48 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 4, player_avtr_pos_x + 256 + 64 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 5, player_avtr_pos_x + 256 + 80 + 2, player_avtr_pos_y + 8);
+		break;
+		case 1:
+			draw_sprite(sActiveSkill, 0, player_avtr_pos_x + 256, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 1 + number_of_skills, player_avtr_pos_x + 256 + 16 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 2, player_avtr_pos_x + 256 + 32 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 3, player_avtr_pos_x + 256 + 48 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 4, player_avtr_pos_x + 256 + 64 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 5, player_avtr_pos_x + 256 + 80 + 2, player_avtr_pos_y + 8);
+		break;
+		case 2:
+			draw_sprite(sActiveSkill, 0, player_avtr_pos_x + 256, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 1, player_avtr_pos_x + 256 + 16 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 2 + number_of_skills, player_avtr_pos_x + 256 + 32 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 3, player_avtr_pos_x + 256 + 48 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 4, player_avtr_pos_x + 256 + 64 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 5, player_avtr_pos_x + 256 + 80 + 2, player_avtr_pos_y + 8);
+		break;
+		case 3:
+			draw_sprite(sActiveSkill, 0, player_avtr_pos_x + 256, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 1, player_avtr_pos_x + 256 + 16 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 2, player_avtr_pos_x + 256 + 32 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 3 + number_of_skills, player_avtr_pos_x + 256 + 48 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 4, player_avtr_pos_x + 256 + 64 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 5, player_avtr_pos_x + 256 + 80 + 2, player_avtr_pos_y + 8);
+		break;
+		case 4:
+			draw_sprite(sActiveSkill, 0, player_avtr_pos_x + 256, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 1, player_avtr_pos_x + 256 + 16 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 2, player_avtr_pos_x + 256 + 32 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 3, player_avtr_pos_x + 256 + 48 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 4 + number_of_skills, player_avtr_pos_x + 256 + 64 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 5, player_avtr_pos_x + 256 + 80 + 2, player_avtr_pos_y + 8);
+		break;
+		case 5:
+			draw_sprite(sActiveSkill, 0, player_avtr_pos_x + 256, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 1, player_avtr_pos_x + 256 + 16 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 2, player_avtr_pos_x + 256 + 32 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 3, player_avtr_pos_x + 256 + 48 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 4, player_avtr_pos_x + 256 + 64 + 2, player_avtr_pos_y + 8);
+			draw_sprite(sActiveSkill, 5 + number_of_skills, player_avtr_pos_x + 256 + 80 + 2, player_avtr_pos_y + 8);
+		break;
+	}
+	
+	draw_text_ext(player_avtr_pos_x + 32, player_avtr_pos_y + 64, player_gold, 16, player_icon_width); // GOLD
+	draw_text_ext(player_avtr_pos_x + 100, player_avtr_pos_y + 64, player_deaths, 16, player_icon_width); // DEATHS
+	draw_text_ext(player_avtr_pos_x + 164, player_avtr_pos_y + 64, player_hp, 16, player_icon_width); // HP
+	draw_text_ext(player_avtr_pos_x + 220, player_avtr_pos_y + 64, player_wins, 16, player_icon_width); // WINS
 		
 	// Player Items
 	if (!isStructEmpty(player_items)) and (player_instance.inventory_toggled == true) {

@@ -14,20 +14,25 @@ if (state == mining_state.IDLE) {
 		player_order = player_rd;
 		if (keyboard_check_pressed(ord("F"))) or (gamepad_button_check(player_device, gp_face3))  {
 			player = player_instance;
-			//global.selected_planter = id;
 			state = mining_state.MINING;
-			//start_chopping(time_to_mine);
-			audio_play_sound(miningSound, 10, true);
 			alarm[0] = time_to_mine;
-			nearest_player.state = targetting.GUI;
+			player.state = targetting.GUI;
+			player.move_state = move.MINING;
 		}
 	} else {
 		player = noone;
 	}
 }
 
-if (state == mining_state.MINING) {
-	//
+if (state == mining_state.MINING) and (player != noone) and (ready == true) {
+	ready = false;
+	player.move_state = move.MINING;
+	
+	var chopping_anim = instance_create_layer(x + 4, y + 4, "Instances", oSkillAnimation);
+	with (chopping_anim) {
+		owner = other.id;
+		skill = "Mining";
+	}
 }
 
 /*
@@ -40,10 +45,11 @@ if ready == false && image_index == 0 && global.Chopping == false {
 }
 */
 
-if (alarm[0] > 0) and (distanceFromPlayer > 18) and (player == noone) {
-	stop_chopping(0);
-	temp_message(x, y, "Chopping Cancelled", c_white);
+if (state == mining_state.MINING) and (distanceFromPlayer > 18) and (player == noone) {
+	temp_message(x, y, "Mining Cancelled", c_white);
 	image_index = 0;
-	alarm[0] = -1;
+	state = mining_state.IDLE;
+	player = noone;
+	player_order = noone;
 	ready = true;
 }

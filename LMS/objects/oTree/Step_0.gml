@@ -13,30 +13,29 @@ if (state == tree.IDLE) {
 	// Player Initial Interaction
 	if (distanceFromPlayer <= 18) {
 		player_order = player_rd;
+		
+		
 		if (keyboard_check_pressed(ord("F"))) or (gamepad_button_check(player_device, gp_face3))  {
 			player = player_instance;
-			//global.selected_planter = id;
 			state = tree.CHOPPING;
-			start_chopping(chooseTimeToChop);
+			alarm[0] = time_to_chop;
 			player.state = targetting.GUI;
-			//nearest_player.state = targetting.GUI;
-			/*
-			if global.userLevels.forestry >= 1 {
-				nearest_player.state = targetting.GUI;
-				ready = false;
-				start_chopping(chooseTimeToChop);
-			} else {
-				temp_message(x, y, "Lvl 1 Forrestry Required.", c_white);
-			}
-			*/
+			player.move_state = move.CHOPPING;
 		}
 	} else {
 		player = noone;
 	}
 }
 
-if (state == tree.CHOPPING) and (player != noone) {
+if (state == tree.CHOPPING) and (player != noone) and (ready == true) {
+	ready = false;
 	player.move_state = move.CHOPPING;
+	
+	var chopping_anim = instance_create_layer(x + 4, y + 4, "Instances", oSkillAnimation);
+	with (chopping_anim) {
+		owner = other.id;
+		skill = "Forrestry";
+	}
 }
 
 switch chooseSprite {
@@ -59,7 +58,7 @@ if ready == false && image_index == 0 && global.Chopping == false {
 	alarm[0] = -1;
 	ready = true;
 }
-
+*/
 
 if (alarm[0] > 0) and (distanceFromPlayer > 18) and (player == noone) {
 	stop_chopping(0);
@@ -68,4 +67,13 @@ if (alarm[0] > 0) and (distanceFromPlayer > 18) and (player == noone) {
 	alarm[0] = -1;
 	ready = true;
 }
-*/
+
+
+if (state == tree.CHOPPING) and (distanceFromPlayer > 18) and (player == noone) {
+	temp_message(x, y, "Chopping Cancelled", c_white);
+	image_index = 0;
+	state = tree.IDLE;
+	player = noone;
+	player_order = noone;
+	ready = true;
+}

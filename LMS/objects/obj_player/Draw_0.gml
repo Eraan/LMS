@@ -11,25 +11,21 @@ draw_sprite_ext(sprite_index, image_index, x + outline_thickness, y + outline_th
 gpu_set_fog(false, outline_color, 0, 0);
 */
 
-draw_set_alpha(.25);
-draw_rectangle_color(x + 4, y + 14, x + 12, y + 14, c_black, c_black, c_black, c_black, false);
-draw_rectangle_color(x + 3, y + 15, x + 13, y + 15, c_black, c_black, c_black, c_black, false);
-draw_rectangle_color(x + 4, y + 16, x + 12, y + 16, c_black, c_black, c_black, c_black, false);
-draw_set_alpha(1);
+if (!dead) {
+	draw_set_alpha(.25);
+	draw_rectangle_color(x + 4, y + 14, x + 12, y + 14, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(x + 3, y + 15, x + 13, y + 15, c_black, c_black, c_black, c_black, false);
+	draw_rectangle_color(x + 4, y + 16, x + 12, y + 16, c_black, c_black, c_black, c_black, false);
+	draw_set_alpha(1);
+	
+}
+
 draw_self();
 
 if (global.game_state == "Paused") {
 	exit;	
 }
 
-if (move_state == move.CHOPPING) and (move_state != move.IDLE) {
-	image_speed = 1;
-	
-	if (image_index == 5) {
-		audio_play_sound(woodChopSound, 10, false);
-	}
-	draw_sprite(asset_get_index("sPlayerChopping" + string(last_direction)), image_index, x, y);
-}
 
 var player_count = variable_struct_names_count(global.player_data);
 

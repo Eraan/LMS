@@ -1,4 +1,5 @@
 steam_update();
+window_set_fullscreen(true);
 
 if keyboard_check_pressed(ord("1")) {save_game();};
 
@@ -27,19 +28,9 @@ if (stage == stages.PENDING) and (count < 4) and (room == rLobby) {
 			}
 	    }
 	}
-
-	if (keyboard_check_pressed(ord("P"))) {
-		add_player("Keyboard", 0);
-	}
-	
-	
 }
 
-game_paused();
-
-if (keyboard_check_pressed(ord("H"))) {
-	oGUI.state = screen.ADAPT;
-}
+//game_paused();
 
 if (stage == stages.PENDING) and (count > 1) and (alarm[0] == "-1") {
 	ready_start = true;

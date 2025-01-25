@@ -6,3 +6,4 @@ image_index = 1;
 state = tree.DEAD;
 player.move_state = move.IDLE;
 player.state = targetting.NULL;
+player.chopping = false;

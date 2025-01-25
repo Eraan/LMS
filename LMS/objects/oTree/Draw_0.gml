@@ -37,4 +37,8 @@ if (state == tree.IDLE) {
 		
 		draw_self();
 	}
+} else if (state == tree.CHOPPING) {
+	draw_sprite_ext(sprite_index, 2, x, y, 1, 1, 0, c_white, 1);
+		
+	draw_self();
 }
