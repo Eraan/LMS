@@ -94,8 +94,7 @@ if ((stage == stages.FIGHT) or (stage == stages.SHOWDOWN)) and (death_count == (
 		}
 		
 		if (player_instance.local_data.wins == 3) {
-			show_debug_message("Game Over");
-			game_end();
+			game_restart();
 		}
 	}
 }
