@@ -11,5 +11,7 @@ itemData = {
 	type: "Weapon",
 	damage: 4,
 	cooldown: 30,
-	atk_anim: sBronzeSwordSwing
+	style: "Jab",
+	augments: {},
+	atk_anim: "sBronzeSwordSwing"
 };

@@ -45,7 +45,7 @@ items = {
 		type: "Weapon",
 		damage: 4,
 		cooldown: 30,
-		atk_anim: sBronzeSwordSwing
+		atk_anim: sBronzeSwordSwingRight
 	},
 	ironSword : {
 		name: "Iron Sword",

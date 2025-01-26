@@ -84,5 +84,5 @@ weapon = {
 	cooldown: 30,
 	style: "Jab",
 	augments: {},
-	atk_anim: sBronzeSwordSwing
+	atk_anim: "sBronzeSwordSwing"
 };

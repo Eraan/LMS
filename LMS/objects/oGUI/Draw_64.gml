@@ -131,4 +131,5 @@ draw_set_font(fPixel);
 if (global.game_state == "Paused") {
 	game_paused_gui();
 }
+
 draw_set_halign(fa_left);

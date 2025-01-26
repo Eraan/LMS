@@ -2,12 +2,12 @@
   "$GMSound":"",
   "%Name":"sound_menu",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"Music",
+    "path":"audiogroups/Music",
   },
-  "bitDepth":0,
+  "bitDepth":1,
   "bitRate":128,
-  "compression":3,
+  "compression":0,
   "conversionMode":0,
   "duration":96.05221,
   "name":"sound_menu",
@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"sound_menu.mp3",
   "type":0,
-  "volume":0.05,
+  "volume":1.0,
 }

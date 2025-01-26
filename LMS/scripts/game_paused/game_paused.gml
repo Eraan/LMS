@@ -32,18 +32,21 @@ function game_paused_gui() {
 		// Down
 		if (gamepad_button_check_pressed(input_device, gp_padd)) {
 			pause_button = "Exit";
+			audio_play_sound(sound_hover, 10, false);
 		}
 		
 		// Up
 		if (gamepad_button_check_pressed(input_device, gp_padu)) {
 			pause_button = "Play";
+			audio_play_sound(sound_hover, 10, false);
 		}
 		
 		if (gamepad_button_check_pressed(input_device, gp_face1)) {
 			if (pause_button = "Play") {
 				global.game_state = "Active";
 			} else if (pause_button = "Exit") {
-				global.is_game_restarting = true;
+				global.is_game_restarting = true
+				audio_group_unload(Music);
 				game_restart();
 			}
 		}

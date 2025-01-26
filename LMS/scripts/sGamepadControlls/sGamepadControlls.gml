@@ -92,8 +92,13 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 					}
 				}
 			} else { // For "Sword" Type Weapons
-				player_instance.sprite_index = asset_get_index("sPlayerAttack" + string(player_instance.last_direction) + string(player_order) + "_" + string(player_instance.weapon[$ "style"]));
-				player_instance.image_speed = .75;
+				var target_sprite = asset_get_index("sPlayerAttack" + string(player_instance.last_direction) + string(player_order) + "_" + string(player_instance.weapon[$ "style"]));
+
+				if (player_instance.sprite_index != target_sprite) {
+				    player_instance.sprite_index = target_sprite;
+				    player_instance.image_index = 0; // Reset to start animation
+				}
+				player_instance.image_speed = 0.75;
 				
 				var attack = instance_create_layer(player_instance.x, player_instance.y, "Instances", oSwordSwing);
 				with (attack) {
@@ -101,9 +106,9 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 					owner = player_instance; // Set the owner of the sword swing to this instance
 					owner_order = player_order;
 					attack_direction = player_instance.last_direction;
-					dir_x = haxis;
-					dir_y = vaxis;
-					sprite_index = player_instance.weapon[$ "atk_anim"];
+					//dir_x = haxis;
+					//dir_y = vaxis;
+					//sprite_index = player_instance.weapon[$ "atk_anim"];
 					image_speed = .75;
 				}
 			}

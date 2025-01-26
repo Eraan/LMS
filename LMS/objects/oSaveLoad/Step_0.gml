@@ -30,7 +30,7 @@ if (stage == stages.PENDING) and (count < 4) and (room == rLobby) {
 	}
 }
 
-//game_paused();
+game_paused();
 
 if (stage == stages.PENDING) and (count > 1) and (alarm[0] == "-1") {
 	ready_start = true;
