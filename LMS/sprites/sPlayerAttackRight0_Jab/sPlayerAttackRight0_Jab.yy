@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Attack",
-    "path":"folders/Sprites/Player Direction/0/Attack.yy",
+    "name":"Jab",
+    "path":"folders/Sprites/Player Direction/0/Attack/Jab.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

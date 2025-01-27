@@ -60,7 +60,7 @@ items = {
 		type: "Weapon",
 		damage: 7,
 		cooldown: 30,
-		atk_anim: sIronSwordSwing
+		atk_anim: sIronSwordSwingRight
 	},
 	/*
 	bronzeBar : oBronzeBar.itemData,

@@ -1,9 +1,11 @@
-image_speed = 0;
+image_speed = .40;
+//alarm[1] = 600;
 
 enum enemy {
 	IDLE,
 	MOVING,
 	ATTACKING,
+	DUPLICATING,
 	DEAD
 }
 

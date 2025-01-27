@@ -1,10 +1,9 @@
 depth = -y;
 
-if (oSaveLoad.stage != stages.FIGHT) {
+if (oSaveLoad.stage != stages.FIGHT) and (state != enemy.DUPLICATING) {
 	if (enemy_health <= 0) and (state != enemy.DEAD) {
-		alarm[1] = 300;	
+		//alarm[1] = 300;	
 		image_speed = 0;
-		image_index = 1;
 		state = enemy.DEAD;
 		oSaveLoad.enemy_count -= 1;
 		var gold_drop = instance_create_layer(x, y, "Instances", oGold) 
@@ -28,7 +27,6 @@ if (oSaveLoad.stage != stages.FIGHT) {
 	} else {
 		player = noone;
 		state = enemy.IDLE;
-		sprite_index = sFarmer;
 	}
 
 	if (player != noone) and (state != enemy.DEAD) {
@@ -45,8 +43,9 @@ if (oSaveLoad.stage != stages.FIGHT) {
 		} else {
 		    // Move toward the player while avoiding solid objects
 			state = enemy.MOVING;
-		    mp_potential_step_object(target_x, target_y, .75, oCollision); // Replace move_speed with enemy speed
-		
+		    mp_potential_step_object(target_x, target_y, .5, oCollision);
+			
+			/*
 			if (enemy_direction >= 45) and (enemy_direction < 135) {
 				sprite_index = sFarmerUp;
 				image_speed = 1;
@@ -66,6 +65,7 @@ if (oSaveLoad.stage != stages.FIGHT) {
 				sprite_index = sFarmerDown;
 				image_speed = 1;
 			}
+			*/
 		}
 	}
 }
@@ -76,5 +76,12 @@ if (oSaveLoad.stage == stages.FIGHT) {
 	var gold_drop = instance_create_layer(x, y, "Instances", oGold) 
 	with (gold_drop) {
 		amount = 5;
+	}
+}
+
+if (state == enemy.DUPLICATING) {
+	if (image_index >= 3.5) {
+		state = enemy.IDLE;
+		sprite_index = sSlime;
 	}
 }

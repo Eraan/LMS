@@ -10,6 +10,8 @@ itemData = {
 	},
 	type: "Weapon",
 	damage: 7,
-	cooldown: 30,
-	atk_anim: sIronSwordSwing
+	cooldown: 60,
+	style: "Swing",
+	augments: {},
+	atk_anim: "sIronSwordSwing"
 };

@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sFarmer",
-    "path":"sprites/sFarmer/sFarmer.yy",
+    "name":"sSlime",
+    "path":"sprites/sSlime/sSlime.yy",
   },
   "spriteMaskId":null,
   "visible":true,
