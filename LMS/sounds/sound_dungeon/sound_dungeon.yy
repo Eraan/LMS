@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sound_dungeon",
+  "audioGroupId":{
+    "name":"Music",
+    "path":"audiogroups/Music",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":92.957146,
+  "name":"sound_dungeon",
+  "parent":{
+    "name":"xDeviruchi",
+    "path":"folders/Sounds/xDeviruchi.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sound_dungeon.wav",
+  "type":0,
+  "volume":1.0,
+}

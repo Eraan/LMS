@@ -7,7 +7,7 @@ if (owner != noone) {
 			y = owner.y;
 		break;
 		case "Down":
-			depth = owner.depth - 1;
+			depth = -y;
 			x = owner.x;
 			y = owner.y;
 		break;
@@ -26,6 +26,7 @@ if (owner != noone) {
 
 //show_debug_message("Image Index: " + string(image_index));
 
-if (image_index >= (image_number - .50)) {
+if (image_index >= (image_number - .75)) {
+	
 	alarm[0] = 1;
 }

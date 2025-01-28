@@ -1,4 +1,4 @@
-image_speed = .40;
+image_speed = .5;
 //alarm[1] = 600;
 
 enum enemy {

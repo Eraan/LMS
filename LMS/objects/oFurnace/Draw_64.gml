@@ -35,8 +35,6 @@ if (state == furnace.PICKING) {
 		var recipe = bars[$ key][$ "recipe"];
 		var amount = bars[$ key][$ "amount"];
 		var cooldown = bars[$ key][$ "cooldown"];
-		
-		
 
 		// Check that Player fulfills requirements to obtain item.
 			var fullfillable = false;

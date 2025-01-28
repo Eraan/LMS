@@ -22,17 +22,21 @@ function add_item(player, item_key, item_data, amount) {
 		//show_debug_message(item_data);
         // If the item doesn't exist, add it with the provided data
 		if (item_data[$ "type"] == "Weapon") {
+			remove_empty_items(player);
 			player.weapon = item_data;
-			show_debug_message("WPN | Equiped " + string(item_key));
+			show_debug_message("WPN | Equipped " + string(item_key));
 		} else {
+			remove_empty_items(player);
 			player.items[$ item_key] = item_data;
 			player.items[$ item_key][$ "amount"] = amount;
 			show_debug_message("INV | Added New " + string(item_key));
+			
 		}
 		
 		//player.items[$ item_key] = item_data;
         
     } else {
+		remove_empty_items(player);
         // If the item exists, increment its amount
         player.items[$ item_key][$ "amount"] += amount;
 		show_debug_message("INV | Added " + string(item_key));

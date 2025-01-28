@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"adaptive_camera",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"adaptive_camera",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

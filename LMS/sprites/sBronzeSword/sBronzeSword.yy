@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Weapons",
-    "path":"folders/Sprites/Weapons.yy",
+    "name":"Bronze Sword",
+    "path":"folders/Sprites/Weapons/Bronze Sword.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

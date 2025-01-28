@@ -1,7 +1,7 @@
 stage = stages.FIGHT;
 alarm[2] = MINUTE1;
 alarm[11] = -1;
-oGUI.state = screen.ADAPT;
+//oGUI.state = screen.ADAPT;
 
 var count = variable_struct_names_count(global.player_data);
 

@@ -16,6 +16,7 @@ itemData = {
     sprite : sArrow,
     object : oArrow,
     type : "Projectile",
-	damage : 1,
-	range : 100
+	damage : 2,
+	range : 100,
+	attributes : ["Poison"]
 };

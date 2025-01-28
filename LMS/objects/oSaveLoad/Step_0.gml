@@ -41,7 +41,7 @@ if (stage == stages.PENDING) and (count > 1) and (alarm[0] == "-1") {
 		
 		if (gamepad_button_check_pressed(i, gp_start)) {
 			oGUI.image_alpha = 0;
-			alarm[0] = 300;
+			alarm[0] = SECOND10;
 			ready_start = false;
 			audio_play_sound(sound_start, 10, false);
 		}
@@ -69,7 +69,7 @@ if (stage == stages.FIGHT) and (count > 1) {
 }
 
 if ((stage == stages.FIGHT) or (stage == stages.SHOWDOWN)) and (death_count == (count - 1)) and (count > 1) {
-	alarm[1] = SECOND30;
+	alarm[1] = MINUTE2;
 	alarm[2] = -1;
 	alarm[11] = 120;
 	death_count = 0;

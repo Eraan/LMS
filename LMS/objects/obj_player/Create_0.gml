@@ -70,19 +70,25 @@ dead = false;
 
 items = {};
 weapon = {
-	name: "Bronze Sword",
-	slug: "bronzeSword",
-	price: 20,
+	name: "Wooden Stick",
+	slug: "woodenStick",
+	price: 15,
 	amount: 1,
-	sprite: sBronzeSword,
-	object: oBronzeSword,
+	sprite: sWoodenStick,
+	object: oWoodenStick,
 	recipe : {
-		"bronzeBar" : 3,
+		"oakLog" : 2,
 	},
 	type: "Weapon",
-	damage: 4,
-	cooldown: 30,
-	style: "Jab",
+	damage: 2,
+	cooldown: 60,
+	style: "Swing",
 	augments: {},
-	atk_anim: "sBronzeSwordSwing"
+	atk_anim: "sWoodenStickSwing"
 };
+conditions = {
+	poisoned: {},
+	burned: {},
+	frozen: {},
+	zapped: {},
+}

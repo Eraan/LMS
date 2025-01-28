@@ -58,7 +58,7 @@ if (oSaveLoad.stage != stages.PENDING) {
 		}
 		
 		// Remove Items from Inventory with a 0 amount.
-		remove_empty_items(player_instance);
+		//remove_empty_items(player_instance);
 	}
 }
 

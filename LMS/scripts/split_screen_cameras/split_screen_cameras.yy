@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"split_screen_cameras",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"split_screen_cameras",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

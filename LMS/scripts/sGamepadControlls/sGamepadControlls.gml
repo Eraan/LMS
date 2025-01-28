@@ -40,27 +40,27 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 		if (gamepad_axis_value(player_device, gp_axislh) < 0) and (!place_meeting(player_instance.x - 2, player_instance.y, oCollision)) {
 			player_instance.move_state = move.RUNNING;
 			player_instance.x -= player_adrenaline;
-			player_instance.image_speed = .5;
+			player_instance.image_speed = player_adrenaline;
 			moving = true;
 		}
 
 		if (gamepad_axis_value(player_device, gp_axislh) > 0) and (!place_meeting(player_instance.x + 2, player_instance.y, oCollision)) {
 			player_instance.move_state = move.RUNNING;
 			player_instance.x += player_adrenaline;
-			player_instance.image_speed = .5;
+			player_instance.image_speed = player_adrenaline;
 			moving = true;
 		}
 		if (gamepad_axis_value(player_device, gp_axislv) > 0) and (!place_meeting(player_instance.x, player_instance.y + 2, oCollision)) {
 			player_instance.move_state = move.RUNNING;
 			player_instance.y += player_adrenaline;
-			player_instance.image_speed = .5;
+			player_instance.image_speed = player_adrenaline;
 			moving = true;
 		}
 
 		if (gamepad_axis_value(player_device, gp_axislv) < 0) and (!place_meeting(player_instance.x, player_instance.y - 2, oCollision)) {
 			player_instance.move_state = move.RUNNING;
 			player_instance.y -= player_adrenaline;
-			player_instance.image_speed = .5;
+			player_instance.image_speed = player_adrenaline;
 			moving = true;
 		}
 				
@@ -81,7 +81,7 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 					dir_x = haxis;
 					dir_y = vaxis;
 					sprite_index = player_instance.weapon[$ "atk_anim"];
-					image_speed = .85;
+					image_speed = 1;
 					
 					var arrow = instance_create_layer(player_instance.x + 8, player_instance.y + 8, "Instances", oArrow);
 					with (arrow) {
@@ -98,7 +98,7 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 				    player_instance.sprite_index = target_sprite;
 				    player_instance.image_index = 0; // Reset to start animation
 				}
-				player_instance.image_speed = 0.75;
+				//player_instance.image_speed = 1;
 				
 				var attack = instance_create_layer(player_instance.x, player_instance.y, "Instances", oSwordSwing);
 				with (attack) {
@@ -109,7 +109,7 @@ function gamepad_controls(player_instance, player_order, player_device, player_a
 					//dir_x = haxis;
 					//dir_y = vaxis;
 					//sprite_index = player_instance.weapon[$ "atk_anim"];
-					image_speed = .75;
+					image_speed = 1;
 				}
 			}
 		}

@@ -134,7 +134,7 @@ function smelt_ore(key) {
 
 function enemy_perform_attack(target_player) {
 	// Fire an Arrow
-    var proj = instance_create_layer(x + 8, y + 8, "Instances", oArrow);
+    var proj = instance_create_layer(x + 8, y + 8, "Instances", oDart);
 	with proj {
 		device = "Keyboard";
 		owner = other.id;
