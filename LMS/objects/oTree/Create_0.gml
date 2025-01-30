@@ -14,7 +14,7 @@ ready = true;
 player = 0;
 randomize();
 time_to_chop = irandom_range(30, SECOND10);
-chooseSprite = irandom_range(1, 3);
+chooseSprite = irandom_range(1, 7);
 chooseTree = 1; //irandom_range(1, 3);
 itemData = noone;
 

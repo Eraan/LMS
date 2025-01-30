@@ -38,17 +38,7 @@ if (state == tree.CHOPPING) and (player != noone) and (ready == true) {
 	}
 }
 
-switch chooseSprite {
-	case 1:
-		sprite_index = sOak1;
-	break;
-	case 2:
-		sprite_index = sOak2;
-	break;
-	case 3:
-		sprite_index = sOak3;
-	break;
-}
+sprite_index = asset_get_index("sOak" + string(chooseSprite));
 
 /*
 if ready == false && image_index == 0 && global.Chopping == false {
